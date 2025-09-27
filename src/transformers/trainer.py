@@ -3884,11 +3884,11 @@ class Trainer:
             getattr(self.accelerator, "parallelism_config", None) is not None
             and self.accelerator.parallelism_config.cp_enabled
         ):
-            if hasattr(model, "config"):
-                if model.config._attn_implementation != "sdpa":
-                    raise ValueError(
-                        f"Context parallelism is supported only with SDPA attention, you are using {model.config._attn_implementation}."
-                    )
+            # if hasattr(model, "config"):
+            #     if model.config._attn_implementation != "sdpa":
+            #         raise ValueError(
+            #             f"Context parallelism is supported only with SDPA attention, you are using {model.config._attn_implementation}."
+            #         )
 
             if "position_ids" not in inputs:
                 logger.warning_once("Position IDs not found in the inputs, generating manually")
